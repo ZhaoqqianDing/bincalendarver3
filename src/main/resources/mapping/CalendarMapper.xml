@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.websitedemo.map.CalendarMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.websitedemo.entity.Calendar">
+        <result column="UserId" jdbcType="INTEGER" property="userId" />
+        <result column="CalendarID" jdbcType="VARCHAR" property="calendarId" />
+        <result column="CalendarName" jdbcType="VARCHAR" property="calendarName" />
+    </resultMap>
+
+
+
+    <insert id="createCalendar">
+        INSERT INTO Calendar (CalendarID,UserID) VALUES (#{calendarID},#{userID})
+    </insert>
+
+<select id="getCalendarByUserID" resultMap="BaseResultMap">
+    select * from calendar where UserID=#{userID}
+</select>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.websitedemo.map.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.websitedemo.entity.User">
+        <result column="UserID" jdbcType="INTEGER" property="userId" />
+        <result column="UserName" jdbcType="VARCHAR" property="userName" />
+        <result column="Password" jdbcType="VARCHAR" property="password" />
+        <result column="UserType" jdbcType="VARCHAR" property="userType" />
+    </resultMap>
+
+    <select id="Sel" resultType="com.example.websitedemo.entity.User">
+        select * from users where UserID = #{id}
+    </select>
+
+    <select id="login" resultType="com.example.websitedemo.entity.User">
+        SELECT * FROM users where UserName = #{userName} and Password = #{passWord}
+    </select>
+
+    <insert id="register" parameterType="com.example.websitedemo.entity.User">
+        INSERT INTO users (UserID,UserName, Password,UserType) VALUES (#{userId},#{userName}, #{password},#{userType})
+    </insert>
+
+    <select id="selectUserByUserName" resultType="com.example.websitedemo.entity.User">
+        select * from users where UserName = #{userName}
+    </select>
+
+</mapper>
